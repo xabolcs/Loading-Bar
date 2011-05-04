@@ -1,0 +1,5 @@
+content   LoadingBar                 chrome/content/
+skin      LoadingBar   classic/1.0   chrome/skin/
+locale    LoadingBar   en-US         chrome/locale/en-US/
+
+overlay   chrome://browser/content/browser.xul   chrome://LoadingBar/content/ff-overlay.xul
