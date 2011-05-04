@@ -6,7 +6,7 @@ var LoadingBar = {
         
         onProgressChange: function(aBrowser,webProgress,request,curSelfProgress,maxSelfProgress,curTotalProgress,maxTotalProgress) {
             if (gBrowser.contentDocument === aBrowser.contentDocument)
-                document.getElementById('urlbar').completed = curTotalProgress/maxTotalProgress;
+                document.getElementById('urlbar').completed = (curTotalProgress-1)/(maxTotalProgress-1);
         },
         
         onStateChange: function() {
