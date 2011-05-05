@@ -1,16 +1,22 @@
 var LoadingBar = {
     listener: {
         onChangeTab: function(e) {
-            document.getElementById('urlbar').completed = 0;
+            document.getElementById('loadingBar').value = 0;
         },
         
         onProgressChange: function(aBrowser,webProgress,request,curSelfProgress,maxSelfProgress,curTotalProgress,maxTotalProgress) {
-            if (gBrowser.contentDocument === aBrowser.contentDocument)
-                document.getElementById('urlbar').completed = (curTotalProgress-1)/(maxTotalProgress-1);
+            if (gBrowser.contentDocument === aBrowser.contentDocument) {
+                var p = 100*(curTotalProgress-1)/(maxTotalProgress-1);
+                
+                if (p == 100)
+                    p = 0;
+                
+                document.getElementById('loadingBar').value = p;
+            }
         },
         
         onStateChange: function() {
-            document.getElementById('urlbar').completed = 0;
+            document.getElementById('loadingBar').value = 0;
         },
         
         onLocationChange: function() {},

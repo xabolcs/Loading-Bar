@@ -1,0 +1,15 @@
+#urlbar {
+    background:-moz-element(#loadingBar) no-repeat;
+    background-size:100% 100%;
+}
+
+#loadingBox {
+    width:0;
+    overflow:hidden;
+}
+
+#loadingBar {
+    background:-moz-field;
+    -moz-appearance:none;
+    border:0;
+}
