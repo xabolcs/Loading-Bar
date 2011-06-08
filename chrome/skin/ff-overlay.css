@@ -9,7 +9,7 @@
 }
 
 #loadingBar {
-    background:-moz-field;
-    -moz-appearance:none;
-    border:0;
+    background:-moz-field !important;
+    -moz-appearance:none !important;
+    border:0 !important;
 }
