@@ -39,9 +39,9 @@ function main(window) {
 
   // Create XUL
   var hbox = document.createElementNS(NS_XUL, "hbox");
-  hbox.setAttribute("id", "loadingBox");
+  hbox.setAttribute("id", "addon-loadingbar-hbox");
   var loadingBar = document.createElementNS(NS_XUL, "progressmeter");
-  loadingBar.setAttribute("id", "loadingBar");
+  loadingBar.setAttribute("id", "addon-loadingbar-progressmeter");
   loadingBar.setAttribute("mode", "determined");
   hbox.appendChild(loadingBar);
   var urlBarContainer = $("urlbar-container");
