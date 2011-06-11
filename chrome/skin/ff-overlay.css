@@ -1,15 +1,19 @@
-#urlbar {
-    background:-moz-element(#loadingBar) no-repeat;
-    background-size:100% 100%;
-}
+@-moz-document url-prefix('chrome://browser/content/browser.xul') {
 
-#loadingBox {
-    width:0;
-    overflow:hidden;
-}
+  #urlbar {
+      background:-moz-element(#loadingBar) no-repeat;
+      background-size:100% 100%;
+  }
 
-#loadingBar {
-    background:-moz-field !important;
-    -moz-appearance:none !important;
-    border:0 !important;
+  #loadingBox {
+      width:0;
+      overflow:hidden;
+  }
+
+  #loadingBar {
+      background:-moz-field !important;
+      -moz-appearance:none !important;
+      border:0 !important;
+  }
+
 }
