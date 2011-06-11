@@ -18,7 +18,7 @@ function main(window) {
   var LoadingBar = {
     listener: {
       onChangeTab: function(e) {
-        loadingBar.value = 0;
+        $("urlbar").style.backgroundSize = '0% 100%';
       },
       onProgressChange: function(aBrowser,webProgress,request,curSelfProgress,maxSelfProgress,curTotalProgress,maxTotalProgress) {
         if (gBrowser.contentDocument === aBrowser.contentDocument) {
@@ -27,7 +27,7 @@ function main(window) {
         }
       },
       onStateChange: function() {
-        loadingBar.value = 0;
+        $("urlbar").style.backgroundSize = '0% 100%';
       }
     }
   };
