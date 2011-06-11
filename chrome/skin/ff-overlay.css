@@ -10,10 +10,4 @@
       overflow:hidden;
   }
 
-  #addon-loadingbar-progressmeter {
-      background:-moz-field !important;
-      -moz-appearance:none !important;
-      border:0 !important;
-  }
-
 }

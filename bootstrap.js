@@ -43,6 +43,7 @@ function main(window) {
   var loadingBar = document.createElementNS(NS_XUL, "progressmeter");
   loadingBar.setAttribute("id", "addon-loadingbar-progressmeter");
   loadingBar.setAttribute("mode", "determined");
+  loadingBar.setAttribute("style", "background:-moz-field;-moz-appearance:none;border:0;");
   hbox.appendChild(loadingBar);
   var urlBarContainer = $("urlbar-container");
   urlBarContainer.appendChild(hbox);
@@ -73,11 +74,11 @@ function startup(data, reason) {
   var sss = Cc["@mozilla.org/content/style-sheet-service;1"]
       .getService(Ci.nsIStyleSheetService);
   sss.loadAndRegisterSheet(
-      addon.getResourceURI("chrome/skin/ff-overlay.css"), sss.USER_SHEET);
+      addon.getResourceURI("chrome/skin/ff-overlay.css"), sss.AGENT_SHEET);
 
   unload(function() {
     sss.unregisterSheet(
-        addon.getResourceURI("chrome/skin/ff-overlay.css"), sss.USER_SHEET);
+        addon.getResourceURI("chrome/skin/ff-overlay.css"), sss.AGENT_SHEET);
   });
 };
 function shutdown(data, reason) unload();
