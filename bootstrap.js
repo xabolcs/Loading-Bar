@@ -3,8 +3,6 @@
 const {classes: Cc, interfaces: Ci, utils: Cu} = Components;
 Cu.import("resource://gre/modules/Services.jsm");
 
-const NS_XUL = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-
 (function(global) global.include = function include(src) (
     Services.scriptloader.loadSubScript(src, global)))(this);
 
@@ -24,11 +22,8 @@ function main(window) {
       },
       onProgressChange: function(aBrowser,webProgress,request,curSelfProgress,maxSelfProgress,curTotalProgress,maxTotalProgress) {
         if (gBrowser.contentDocument === aBrowser.contentDocument) {
-            var p = 100*(curTotalProgress-1)/(maxTotalProgress-1);
-
-            if (p == 100) p = 0;
-
-            loadingBar.value = p;
+            var val = (curTotalProgress-1)/(maxTotalProgress-1);
+            $("urlbar").style.backgroundSize = (val==1?0:100*val) + '% 100%';
         }
       },
       onStateChange: function() {
@@ -37,24 +32,11 @@ function main(window) {
     }
   };
 
-  // Create XUL
-  var hbox = document.createElementNS(NS_XUL, "hbox");
-  hbox.setAttribute("id", "addon-loadingbar-hbox");
-  var loadingBar = document.createElementNS(NS_XUL, "progressmeter");
-  loadingBar.setAttribute("id", "addon-loadingbar-progressmeter");
-  loadingBar.setAttribute("mode", "determined");
-  hbox.appendChild(loadingBar);
-  var urlBarContainer = $("urlbar-container");
-  urlBarContainer.appendChild(hbox);
-
   // 
   gBrowser.tabContainer.addEventListener('TabSelect',LoadingBar.listener.onChangeTab,false);
   gBrowser.addTabsProgressListener(LoadingBar.listener);
 
   unload(function() {
-    // Remove XUL
-    urlBarContainer.removeChild(hbox);
-
     // Remove tab select listener
     gBrowser.tabContainer.removeEventListener('TabSelect',LoadingBar.listener.onChangeTab,false);
 
