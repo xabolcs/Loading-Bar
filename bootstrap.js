@@ -16,7 +16,6 @@ var addon = {
 function main(window) {
   var {document, gBrowser} = window;
   function $(id) document.getElementById(id);
-  function xul(type) document.createElementNS(NS_XUL, type);
 
   var LoadingBar = {
     listener: {
@@ -39,9 +38,9 @@ function main(window) {
   };
 
   // Create XUL
-  var hbox = xul("hbox");
+  var hbox = document.createElementNS(NS_XUL, "hbox");
   hbox.setAttribute("id", "loadingBox");
-  var loadingBar = xul("progressmeter");
+  var loadingBar = document.createElementNS(NS_XUL, "progressmeter");
   loadingBar.setAttribute("id", "loadingBar");
   loadingBar.setAttribute("mode", "determined");
   hbox.appendChild(loadingBar);
